@@ -1,0 +1,11 @@
+# Ignore Unity temporary files
+Temp/
+Library/
+Logs/
+obj/
+*.csproj
+*.unitypackage
+
+# Ignore system files
+.DS_Store
+Thumbs.db
