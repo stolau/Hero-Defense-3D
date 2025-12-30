@@ -27,6 +27,84 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Use virtual joystick controls for player movement
 - Test spell casting via the UI spell slots
 
+## Git Workflow
+
+### Main Branch
+The main development branch is **master**.
+
+### Before Starting Any Task
+
+**ALWAYS** verify you are on the latest master branch before making changes:
+
+```bash
+git status                    # Check current branch
+git checkout master          # Switch to master if needed
+git pull origin master       # Get latest changes
+```
+
+### Creating Feature/Fix Branches
+
+When tasked to make changes, **ALWAYS create a new branch** unless explicitly told to work within an existing branch.
+
+#### Branch Naming Convention
+
+Use descriptive branch names with appropriate prefixes:
+
+- **FIX/** - For bug fixes
+  - Example: `FIX/enemy-spawn-timing`
+  - Example: `FIX/spell-cooldown-not-resetting`
+
+- **FEATURE/** - For new features
+  - Example: `FEATURE/new-fire-spell`
+  - Example: `FEATURE/boss-enemy-type`
+
+- Other common prefixes:
+  - **REFACTOR/** - Code refactoring
+  - **UPDATE/** - Updates to existing features
+  - **TEST/** - Adding or modifying tests
+
+```bash
+# Create and switch to a new branch
+git checkout -b FEATURE/short-description
+
+# Example
+git checkout -b FIX/player-health-bar-display
+```
+
+### Working on Existing Branches
+
+If the user asks to make changes to a specific branch:
+1. Verify the branch exists: `git branch -a`
+2. Switch to it: `git checkout branch-name`
+3. Make changes without creating a new branch
+4. **IMPORTANT**: If unsure whether you're on the correct branch, always verify with `git status` before starting work
+
+### Branch Verification Checklist
+
+Before making any code changes:
+1. Run `git status` to confirm current branch
+2. Ensure you're NOT on master (unless explicitly instructed)
+3. Ensure branch name matches the task (FIX/FEATURE/etc.)
+4. If on wrong branch, switch to correct one or create new branch
+
+### Example Workflow
+
+```bash
+# Starting a new bug fix
+git checkout master
+git pull origin master
+git checkout -b FIX/enemy-health-calculation
+
+# Make your changes...
+
+# Verify branch before committing
+git status
+
+# When ready to commit
+git add .
+git commit -m "Fix enemy health calculation overflow"
+```
+
 ## Code Architecture
 
 ### Core Game Loop
